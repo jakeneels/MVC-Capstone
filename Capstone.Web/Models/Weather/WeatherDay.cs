@@ -15,7 +15,15 @@ namespace Capstone.Web.Models
     {
       get
       {
-        return "";
+        
+        if (InCelcius)
+        {
+          return "";
+        }
+        else
+        {
+          return "";
+        }
 
       }
     }
