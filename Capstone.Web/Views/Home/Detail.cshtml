@@ -1,0 +1,17 @@
+﻿@using Capstone.Web.Models.PageModels
+@model DetailPage
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    @Model.Park.ParkName
+    @Model.Weather.WeatherDays[0].Forecast
+    @Model.Weather.WeatherDays[0].Hi
+    @Model.Weather.WeatherDays[0].Advisory
+
+</body>
+</html>
