@@ -30,8 +30,9 @@ namespace Capstone.Web.Controllers
     {
       parkCode = "ENP";
       DetailPage model = new DetailPage();
-      model.Park = _dal.GetPark(parkCode);
+      model.NatPark = _dal.GetPark(parkCode);
       model.Weather = _dal.GetForecast(parkCode);
+      //model.Weather.WeatherDays[0].Forecast;
 
       return View("Detail", model);
     }

@@ -31,7 +31,8 @@ namespace Capstone.Web.Models.DAL
 
         if (reader.Read())
         {
-          return AssignPark(reader);
+          var park = AssignPark(reader);
+          return park;
         }
         else
         {
@@ -64,8 +65,7 @@ namespace Capstone.Web.Models.DAL
     private Park AssignPark(SqlDataReader reader)
     {
       var park = new Park();
-      if (reader.Read())
-      {
+      
         try
         {
           park.ParkCode = reader["parkCode"].ToString();
@@ -86,7 +86,6 @@ namespace Capstone.Web.Models.DAL
 
         }
         catch (Exception) { }
-      }
 
       return park;
     }

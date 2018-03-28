@@ -9,7 +9,7 @@ namespace Capstone.Web.Models.PageModels
   {
 
     public FiveDayForecast Weather { get; set; }
-    public Park Park { get; set; }
+    public Park NatPark { get; set; }
 
   }
 }
