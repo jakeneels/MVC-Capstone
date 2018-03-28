@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace Capstone.Web.Models
-{
+{ 
   public class Park
   {
     public string ParkCode { get; set; }
@@ -13,7 +13,7 @@ namespace Capstone.Web.Models
     public int Acreage { get; set; }
     public int ElevationInFeet { get; set; }
     public double MilesOfTrail { get; set; }
-    public int NumberOfCampsites { get; set; }
+    public int NumCampsites { get; set; }
     public string Climate { get; set; }
     public DateTime YearFounded { get; set; }
     public int AnnualVisitorCount { get; set; }
@@ -22,11 +22,7 @@ namespace Capstone.Web.Models
     public string ParkDescription { get; set; }
     public decimal EntryFee { get; set; }
     public int NumSpecies { get; set; }
-
     public string ImageName => (ParkCode + ".jpg");
-
-
-
 
   }
 }
