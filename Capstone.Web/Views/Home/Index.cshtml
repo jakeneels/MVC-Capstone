@@ -6,14 +6,27 @@
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
 
     <style>
-        .row{
-            background-color:aquamarine;
+
+        .row {
+            background-color: white;
         }
-        .data:nth-child(odd){
-            background-color:burlywood;
+
+        .data:nth-child(odd) {
+            background-color: burlywood;
         }
-        .data{
-            background-color:darkkhaki;
+
+        .data {
+            background-color: darkkhaki;
+        }
+
+        .bold {
+            font-weight: bold;
+            padding-top: 20px;
+        }
+
+        .header {
+            height: 20%;
+            width: auto;
         }
 
     </style>
@@ -21,23 +34,27 @@
 </head>
 
 <body>
+    @*<div class="container">
+                <div class="row">
+        <<<<<<< HEAD
+                    <div class="col-12">
+                        <img src= "~/Content/img/logo.png">
+                    </div>*@
+    @*<div class="col-1 data">zz</div>
+        <div class="col-6 data">a</div>
+        <div class="col-3 data">s</div>*@
+
     <div class="container">
-        <div class="row">
-            <div class="col-2 data">@Model[0].ParkName</div>
-            <div class="col-1 data">zz</div>
-            <div class="col-6 data">a</div>
-            <div class="col-3 data">s</div>
 
-        </div>
-        <div class="row">
-            <div class="col-3 data">Hi</div>
-            <div class="col-6 data">zz</div>
-            <div class="col-1 data">a</div>
-            <div class="col-2 data">s</div>
+        @*</div>*@
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-6"><img src="~/Content/img/parks/@item.ImageName"></div>
+                <div class="col-6"><span class="bold">@item.ParkName</span> <br> @item.ParkDescription</div>
+            </div>
 
-        </div>
-
-
+        }
 
     </div>
 
