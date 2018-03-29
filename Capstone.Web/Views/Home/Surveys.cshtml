@@ -1,0 +1,19 @@
+﻿@using Capstone.Web.Models.PageModels
+@model SurveyPage
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    @Html.Partial("PostSurvey");
+
+    @foreach (var post in Model.Parks)
+    {
+      @post.ParkCode
+      @post.ImageName
+      @post.NumCampsites
+    }
+</body>
+</html>

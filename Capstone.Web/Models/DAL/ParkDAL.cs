@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Capstone.Web.Models.PageModels;
 
 namespace Capstone.Web.Models.DAL
 {
@@ -13,6 +14,64 @@ namespace Capstone.Web.Models.DAL
     public ParkDAL(string connectionString)
     {
       this.connectionString = connectionString;
+    }
+
+    public List<SurveyPost> GetSurveys()
+    {
+      List<SurveyPost> survey = new List<SurveyPost>();
+
+      const string getSurveySql = @"select * from survey_result";
+      using (SqlConnection conn = new SqlConnection(connectionString))
+      {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(getSurveySql, conn);
+
+        var reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+          survey.Add(AssignSurvey(reader));
+        }
+
+        return survey;
+      }
+    }
+    
+    private SurveyPost AssignSurvey(SqlDataReader reader)
+    {
+      var survey = new SurveyPost();
+
+      try
+      {
+        survey.ParkCode = reader["parkCode"].ToString();
+        survey.EMail = reader["emailAddress"].ToString();
+        survey.StateOfResidence = reader["state"].ToString();
+        survey.PhysicalActivity = (reader["activityLevel"].ToString());
+        
+
+      }
+      catch (Exception) { }
+
+      return survey;
+    }
+    
+    public bool PostSurvey(SurveyPost survey)
+    {
+      bool IsSuccessful = false;
+      const string getSurveySql = @"Insert into survey_result(parkCode, emailAddress, state, activityLevel) Values(@parkCode, ' @email', ' @state', '@activity')";
+      using (SqlConnection conn = new SqlConnection(connectionString))
+      {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(getSurveySql, conn);
+        cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
+        cmd.Parameters.AddWithValue("@email", survey.EMail);
+        cmd.Parameters.AddWithValue("@state", survey.StateOfResidence);
+        cmd.Parameters.AddWithValue("@activity", survey.PhysicalActivity);
+
+        IsSuccessful = (cmd.ExecuteNonQuery() > 0);
+      }
+
+        return IsSuccessful;
     }
 
     #region park

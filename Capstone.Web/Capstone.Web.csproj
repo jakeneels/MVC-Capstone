@@ -186,6 +186,8 @@
     <Compile Include="Models\DAL\ParkDAL.cs" />
     <Compile Include="Models\PageModels\DetailPage.cs" />
     <Compile Include="Models\PageModels\ParkList.cs" />
+    <Compile Include="Models\PageModels\SurveyPage.cs" />
+    <Compile Include="Models\PageModels\SurveyPost.cs" />
     <Compile Include="Models\Weather\FiveDayForecast.cs" />
     <Compile Include="Models\Park.cs" />
     <Compile Include="Models\Survey.cs" />
@@ -207,9 +209,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Pages\Detail.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Shared\Weather.cshtml" />
-
+    <Content Include="Views\Home\PostSurvey.cshtml" />
+    <Content Include="Views\Home\Surveys.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

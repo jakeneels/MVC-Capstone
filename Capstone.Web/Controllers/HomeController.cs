@@ -22,19 +22,46 @@ namespace Capstone.Web.Controllers
     public ActionResult Index()
     {
       List<Park> model = _dal.GetParks();
-      
+      var hi = _dal.GetSurveys();
+
       return View("Index", model);
     }
 
     public ActionResult Detail(string parkCode)
     {
-      parkCode = "ENP";
+      var query = HttpContext.Request.QueryString;
+      var qs = query.GetValues("parkCode");
+
       DetailPage model = new DetailPage();
       model.NatPark = _dal.GetPark(parkCode);
       model.Weather = _dal.GetForecast(parkCode);
-      //model.Weather.WeatherDays[0].Forecast;
 
       return View("Detail", model);
+    }
+
+    public ActionResult Surveys()
+    {
+      var model = new SurveyPage();
+      model.Surveys = _dal.GetSurveys();
+      model.Parks = _dal.GetParks();
+
+      return View("Surveys", model);
+    }
+
+    public ActionResult PostSurvey()
+    {
+      var model = new SurveyPage();
+      model.Parks = _dal.GetParks();
+
+      return View("PostSurvey", model);
+    }
+
+    [HttpPost]
+    public ActionResult PostSurvey(SurveyPost sur)
+    {
+      _dal.PostSurvey(sur);
+
+      return RedirectToAction("Surveys");
     }
   }
 }
