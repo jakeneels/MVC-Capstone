@@ -8,6 +8,6 @@ namespace Capstone.Web.Models
   public class FiveDayForecast
   {
     public string ParkCode { get; set; }
-    public WeatherDay[] WeatherDays { get; set; } = new WeatherDay[5];
+    public List<WeatherDay> WeatherDays { get; set; } = new List<WeatherDay>();
   }
 }

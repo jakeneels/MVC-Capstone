@@ -15,6 +15,8 @@ namespace Capstone.Web.Models.DAL
       this.connectionString = connectionString;
     }
 
+    #region park
+
     public Park GetPark(string parkCode)
     {
       parkCode = parkCode.ToUpper();
@@ -29,7 +31,8 @@ namespace Capstone.Web.Models.DAL
 
         if (reader.Read())
         {
-          return AssignPark(reader);
+          var park = AssignPark(reader);
+          return park;
         }
         else
         {
@@ -62,8 +65,7 @@ namespace Capstone.Web.Models.DAL
     private Park AssignPark(SqlDataReader reader)
     {
       var park = new Park();
-      if (reader.Read())
-      {
+      
         try
         {
           park.ParkCode = reader["parkCode"].ToString();
@@ -84,9 +86,53 @@ namespace Capstone.Web.Models.DAL
 
         }
         catch (Exception) { }
-      }
 
       return park;
     }
+    #endregion
+
+    #region weather
+
+    public FiveDayForecast GetForecast(string parkCode)
+    {
+      FiveDayForecast forecast = new FiveDayForecast();
+      parkCode = parkCode.ToUpper();
+      const string getWeatherQuery = @"select * from weather where parkCode = @parkCode";
+      using (SqlConnection conn = new SqlConnection(connectionString))
+      {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(getWeatherQuery, conn);
+        cmd.Parameters.AddWithValue("@parkCode", parkCode);
+
+        var reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+          forecast.WeatherDays.Add(AssignWeatherDay(reader));
+          forecast.ParkCode = reader["parkCode"].ToString();
+        }
+
+        return forecast;
+      }
+    }
+
+    private WeatherDay AssignWeatherDay(SqlDataReader reader)
+    {
+      var weatherDay = new WeatherDay();
+
+        try
+        {
+          weatherDay.Hi = int.Parse(reader["high"].ToString());
+          weatherDay.Lo = int.Parse(reader["low"].ToString());
+          weatherDay.Forecast = reader["forecast"].ToString();
+          weatherDay.Index = int.Parse(reader["fiveDayForecastValue"].ToString());
+        }
+        catch (Exception) { }
+
+      return weatherDay;
+    }
+
+
+    #endregion
   }
 }

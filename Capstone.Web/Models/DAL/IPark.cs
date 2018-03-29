@@ -10,5 +10,7 @@ namespace Capstone.Web.Models.DAL
   {
     List<Park> GetParks();
     Park GetPark(string parkCode);
+    FiveDayForecast GetForecast(string parkCode);
+
   }
 }
