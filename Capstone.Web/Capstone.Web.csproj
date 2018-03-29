@@ -138,6 +138,7 @@
     <Content Include="Content\img\weather\snow.png" />
     <Content Include="Content\img\weather\sunny.png" />
     <Content Include="Content\img\weather\thunderstorms.png" />
+    <Content Include="Content\Layout.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -209,7 +210,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pages\Detail.cshtml" />
     <Content Include="Views\Shared\Weather.cshtml" />
-
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
