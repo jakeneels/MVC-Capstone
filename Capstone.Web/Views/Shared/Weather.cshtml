@@ -1,0 +1,31 @@
+﻿@using Capstone.Web.Models.PageModels
+@model DetailPage
+
+<div class="row">
+    @foreach (var day in Model.Weather.WeatherDays)
+    {
+        if (day.Index == 1)
+        {
+            <div class="col-3">
+                <img class="img" src="~/Content/img/weather/@day.ImageName" />
+                High: @day.Hi
+                Low: @day.Lo
+                <br />
+                <span class="text-danger">Advisory: @day.Advisory</span>
+            </div>
+        }
+        else
+        {
+            <div class="col-2">
+                <img class="img" src="~/Content/img/weather/@day.ImageName" />
+                <div class="text-center">
+                    High: @day.Hi<br />
+                    Low: @day.Lo
+                </div>
+            </div>
+        }
+
+    }
+    <div class="col-4">Hi</div>
+
+</div>

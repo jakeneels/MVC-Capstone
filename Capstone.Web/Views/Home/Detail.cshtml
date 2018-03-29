@@ -4,14 +4,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+
+    <style>
+
+        .row {
+            background-color: white;
+        }
+
+        .data:nth-child(odd) {
+            background-color: burlywood;
+        }
+
+        .data {
+            background-color: darkkhaki;
+        }
+
+        .bold {
+            font-weight: bold;
+            padding-top: 20px;
+        }
+
+        .header {
+            height: 20%;
+            width: auto;
+        }
+
+        .img {
+            position: center;
+            width:inherit; 
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 2em;
+        }
+        .row{
+            padding-bottom:2%
+        }
+    </style>
     <meta charset="utf-8" />
-    <title></title>
+    <title>@Model.NatPark.ParkName</title>
 </head>
 <body>
-    @Model.NatPark.ParkName
-    @Model.Weather.WeatherDays[0].Forecast
-    @Model.Weather.WeatherDays[0].Hi
-    @Model.Weather.WeatherDays[0].Advisory
+    <div class="container">
+        <div class="row">
+            <div class="col-12"><img class="img border" src="~/Content/img/parks/@Model.NatPark.ImageName"></div>
+        </div>
+        <div class="row">
+            <div  class="col-12 title border-bottom">@Model.NatPark.ParkName </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-12">@Model.NatPark.ParkDescription </div>
+            </div>
+       
+            @Html.Partial("Weather")
+
+        </div>
+
+
+
+    </div>
 
 </body>
 </html>

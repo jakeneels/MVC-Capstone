@@ -16,8 +16,8 @@ namespace Capstone.Web.Controllers
     public HomeController(IPark dal)
     {
       _dal = dal;
-      
     }
+
     // GET: Home
     public ActionResult Index()
     {

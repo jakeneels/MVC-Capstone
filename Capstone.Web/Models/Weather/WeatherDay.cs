@@ -16,6 +16,36 @@ namespace Capstone.Web.Models
     //fiveDayForecastValue
     public int Index { get; set; }
 
+    public string ImageName
+    {
+      get
+      {
+        switch (Forecast)
+        {
+          case "partly cloudy":
+            return "partlyCloudy.png";
+
+          case "sunny":
+            return "sunny.png";
+
+          case "snow":
+            return "snow.png";
+
+          case "cloudy":
+            return "cloudy.png";
+
+          case "rain":
+            return "rain.png";
+
+          case "thunderstorms":
+            return "thunderstorms.png";
+
+          default:
+            return "sunny.png";
+        }
+      }
+    }
+
     //returns either F or C depending on bool inCelcius
     public int Lo
     {
