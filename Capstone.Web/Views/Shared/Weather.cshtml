@@ -19,13 +19,15 @@
             <div class="col-2">
                 <img class="img" src="~/Content/img/weather/@day.ImageName" />
                 <div class="text-center">
+                    @if (Model.Weather.InCelcius)
+                    {
+                      day.InCelcius = true;
+                    }
                     High: @day.Hi<br />
                     Low: @day.Lo
                 </div>
             </div>
         }
-
     }
-    <div class="col-4">Hi</div>
 
 </div>
