@@ -207,8 +207,9 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Pages\Detail.cshtml" />
     <Content Include="Views\Shared\Weather.cshtml" />
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
