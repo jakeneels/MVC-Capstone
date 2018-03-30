@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <style>
+
+        .layout {
+            width: 10%;
+            height:auto;
+        }
+
+        li {
+            display: inline
+        }
+
+        .tabtext {
+            font-size: 20px;
+            padding-left: 10px;
+        }
+        .full-width-div {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            background-color:black;
+        }
+    </style>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        
+            <img class="layout" src="~/Content/img/scenery.png" />
+            <nav>
+                <ul class="nav nav-tabs">
+                    <li class="tabtext"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="tabtext"><a href="@Url.Action("Surveys","Home")">Surveys</a></li>
+                </ul>
+            </nav>
+    </div>
+    <div> 
+        @RenderBody()
+    </div>
+</body>
+</html>

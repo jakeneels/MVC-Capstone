@@ -11,5 +11,6 @@ namespace Capstone.Web.Models.PageModels
     public string EMail { get; set; }
     public string StateOfResidence { get; set; }
     public string PhysicalActivity { get; set; }
+    public int Count { get; set; }
   }
 }
