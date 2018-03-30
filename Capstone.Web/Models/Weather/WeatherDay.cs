@@ -16,6 +16,22 @@ namespace Capstone.Web.Models
     public int Index { get; set; }
     public bool InCelcius { get; set; } = false;
 
+    public string LoStr
+    {
+      get
+      {
+        return (InCelcius) ? (Lo.ToString() + "°C") : (Lo.ToString() + "°F");
+      }
+    }
+
+    public string HiStr
+    {
+      get
+      {
+        return (InCelcius) ? (Hi.ToString() + "°C") : (Hi.ToString() + "°F");
+      }
+    }
+
     //returns either F or C depending on bool inCelcius
     public int Lo
     {
@@ -93,15 +109,15 @@ namespace Capstone.Web.Models
         {
           _advisory += "Pack sunblock. ";
         }
-        if (Hi > 75 || Lo > 75)
+        if (_hi > 75 || _lo > 75)
         {
           _advisory += "High temperature! bring and extra gallon of water. ";
         }
-        if ((Hi - Lo) > 20)
+        if ((_hi - _lo) > 20)
         {
           _advisory += "Wear breathable layers. ";
         }
-        if (Hi < 20 || Lo < 20)
+        if (_hi < 20 || _lo < 20)
         {
           _advisory += "Low temperature! avoid prolonged exposure. ";
         }

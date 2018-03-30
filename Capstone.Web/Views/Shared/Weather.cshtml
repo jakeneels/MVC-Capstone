@@ -1,33 +1,55 @@
 ﻿@using Capstone.Web.Models.PageModels
 @model DetailPage
 
+
+
+@if (Model.Weather.InCelcius) { Model.Weather.WeatherDays[0].InCelcius = true; }
+
 <div class="row">
+    <div class="col-11 border-bottom">
+        <h3>Weather</h3>
+    </div>
+    <div class="col-1 border-bottom">
+
+
+        <form method="get" action="@Url.Action("ChangeTemp", "Home")">
+
+            <label class="switch">
+                <input type="checkbox" onclick="this.form.submit();" id="togBtn" @(Model.Weather.InCelcius ? "checked" : "")>
+                <div class="slider round"><span class="on">°C</span><span class="off">°F</span><!--END--></div>
+            </label>
+        </form>
+
+    </div>
+</div>
+
+<div class="row"> <div class=" col-12 text-danger alert-danger text-xl-center"><h5>@(Model.Weather.WeatherDays[0].Advisory == "" ? "" : "Advisory: " + Model.Weather.WeatherDays[0].Advisory)</h5></div></div>
+
+<div class="row">
+    <div class="col-3">
+        <img class="img" src="~/Content/img/weather/@Model.Weather.WeatherDays[0].ImageName" />
+        <span class="font-weight-bold">High: @Model.Weather.WeatherDays[0].HiStr</span>
+        <span class="font-weight-bold">Low: @Model.Weather.WeatherDays[0].LoStr</span>
+        <br />
+    </div>
+
+
+
     @foreach (var day in Model.Weather.WeatherDays)
     {
-        if (day.Index == 1)
-        {
-            <div class="col-3">
-                <img class="img" src="~/Content/img/weather/@day.ImageName" />
-                High: @day.Hi
-                Low: @day.Lo
-                <br />
-                <span class="text-danger">Advisory: @day.Advisory</span>
-            </div>
-        }
-        else
+        if (Model.Weather.InCelcius) { day.InCelcius = true; }
+
+        if (day.Index != 1)
         {
             <div class="col-2">
                 <img class="img" src="~/Content/img/weather/@day.ImageName" />
                 <div class="text-center">
-                    @if (Model.Weather.InCelcius)
-                    {
-                      day.InCelcius = true;
-                    }
-                    High: @day.Hi<br />
-                    Low: @day.Lo
+                    <span class="font-weight-bold">High: @day.HiStr</span><br />
+                    <span class="font-weight-bold">Low: @day.LoStr</span>
                 </div>
             </div>
         }
     }
-
 </div>
+
+

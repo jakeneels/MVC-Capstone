@@ -5,6 +5,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/tempSwitch.css" />
+
+    <script type="text/javascript">
+   
+    </script>
 
     <style>
 
@@ -32,7 +37,7 @@
 
         .img {
             position: center;
-            width:inherit; 
+            width: inherit;
         }
 
         .title {
@@ -40,10 +45,9 @@
             font-size: 2em;
         }
 
-        .row{
-            padding-bottom:2%
+        .row {
+            padding-bottom: 2%
         }
-
     </style>
     <meta charset="utf-8" />
     <title>@Model.NatPark.ParkName</title>
@@ -51,19 +55,19 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12"><img class="img border" src="~/Content/img/parks/@Model.NatPark.ImageName"></div>
+            <div class="col-12"><img class="img border" src="~/Content/img/parks/@(Model.NatPark.ParkCode + "-l.jpg")"></div>
         </div>
         <div class="row">
-            <div  class="col-12 title border-bottom">@Model.NatPark.ParkName </div>
-            </div>
-    
-            <div class="row">
-                <div class="col-12">@Model.NatPark.ParkDescription </div>
-            </div>
-       
-            @Html.Partial("Weather")
-
+            <div class="col-12 title border-bottom">@Model.NatPark.ParkName </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">@Model.NatPark.ParkDescription </div>
+        </div>
+
+        @Html.Partial("Weather")
+
+    </div>
 
 </body>
 </html>
