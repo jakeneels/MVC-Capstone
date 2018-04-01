@@ -23,8 +23,17 @@ namespace Capstone.Web.Controllers
     {
       List<Park> model = _dal.GetParks();
       var hi = _dal.GetSurveys();
-
       return View("Index", model);
+    }
+
+    public ActionResult Detail(string parkCode)
+    {
+      Session["parkCode"] = parkCode;
+      string code = Session["parkCode"].ToString();
+
+      DetailPage model = GetDetailPage(code.ToString());
+
+      return View("Detail", model);
     }
 
     public ActionResult Surveys()
@@ -44,6 +53,16 @@ namespace Capstone.Web.Controllers
       return View("PostSurvey", model);
     }
 
+
+    public ActionResult SurveyCount()
+    {
+      var model = new SurveyPost();
+      //model.Count = _dal.GetSurveyCount();
+
+      return View("SurveyCount", model);
+
+    }
+
     [HttpPost]
     public ActionResult PostSurvey(SurveyPost sur)
     {
@@ -52,15 +71,8 @@ namespace Capstone.Web.Controllers
       return RedirectToAction("Surveys");
     }
 
-    public ActionResult Detail(string parkCode)
-    {
-      Session["parkCode"] = parkCode;
-      string code = Session["parkCode"].ToString();
 
-      DetailPage model = GetDetailPage(code.ToString());
 
-      return View("Detail", model);
-    }
 
     public ActionResult ChangeTemp()
     {
@@ -81,7 +93,7 @@ namespace Capstone.Web.Controllers
       else
       {
         var test = (bool)Session["TempInC"];
-        Session["TempInC"]  = (bool)Session["TempInC"];
+        Session["TempInC"] = (bool)Session["TempInC"];
       }
 
       return (bool)Session["TempInC"];

@@ -5,15 +5,42 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .fontBold{
+            font-weight:bold;
+            font-size:20px;
+
+        }
+        .img_size {
+            padding-top: 10px;
+            
+        }
+        .center {
+            float: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+     
+       
+    </style>
 </head>
 <body>
     @Html.Partial("PostSurvey");
+    <div class="container">
 
-    @foreach (var post in Model.Parks)
+        @foreach (var post in Model.Parks)
     {
-      @post.ParkCode
-      @post.ImageName
-      @post.NumCampsites
+        <div class="container">
+            <div class="row">
+                <div class="col-12"><span class="fontBold">@post.ParkName<br><span>Number of surveys:</span>@Model.Surveys.Count</span><br></div>
+            </div>
+            <div class="row">
+                <img class=" col-5 img_size" src="~/Content/img/parks/@post.ImageName" />
+ 
+        </div>
+        </div>
+        
     }
+    </div>
 </body>
 </html>

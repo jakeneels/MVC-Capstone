@@ -17,13 +17,22 @@
                     <option value="@item.ParkCode">@item.ParkName</option>
                 }
             </select>
+
             Email: <input name="EMail" />
 
-            State Of Residence: <input type="text" name="StateOfResidence" />
+            State Of Residence: 
+            <select name="StateOfResidence">
+                @foreach (var state in Model.States)
+                {
+                    <option value="@state.Value">@state.Key</option>
+                }
+            </select>
 
             Activity Level: <select name="PhysicalActivity">
-                <option value="Active">Active</option>
+                <option value="Inactive">Active</option>
                 <option value="Sedentary">Sedentary</option>
+                <option value="Active">Active</option>
+                <option value="Extremely Active">ExtremelyActive</option>
             </select>
 
             <input type="submit" value="Submit" />
