@@ -40,6 +40,7 @@ namespace Capstone.Web.Controllers
     {
       var model = new SurveyPage();
       model.Surveys = _dal.GetSurveys();
+      
       model.Parks = _dal.GetParks();
 
       return View("Surveys", model);

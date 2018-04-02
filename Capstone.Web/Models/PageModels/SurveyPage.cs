@@ -9,8 +9,6 @@ namespace Capstone.Web.Models.PageModels
   public class SurveyPage
   {
 
-    public List<SurveyPost> Surveys { get; set; } = new List<SurveyPost>();
-
     public List<Park> Parks { get; set; } = new List<Park>();
 
     public Dictionary<string, string> States
@@ -69,7 +67,6 @@ namespace Capstone.Web.Models.PageModels
           {"Wyoming","WY"                         },
           {"Wisconsin","WI"                       }
                   };
-
       }
     }
   }

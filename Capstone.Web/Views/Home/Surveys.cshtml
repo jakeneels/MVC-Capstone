@@ -6,41 +6,55 @@
     <meta charset="utf-8" />
     <title></title>
     <style>
-        .fontBold{
-            font-weight:bold;
-            font-size:20px;
-
+        .fontBold {
+            font-weight: bold;
+            font-size: 20px;
         }
+
         .img_size {
             padding-top: 10px;
-            
         }
+
         .center {
             float: none;
             margin-left: auto;
             margin-right: auto;
         }
-     
-       
     </style>
 </head>
 <body>
     @Html.Partial("PostSurvey");
     <div class="container">
+        @{ 
+          int i = 0;
+        }
 
         @foreach (var post in Model.Parks)
-    {
-        <div class="container">
-            <div class="row">
-                <div class="col-12"><span class="fontBold">@post.ParkName<br><span>Number of surveys:</span>@Model.Surveys.Count</span><br></div>
+        {
+
+            <div class="container">
+                <div class="row">
+
+                    <a href="@Url.Action("Detail", "Home", new { parkCode = post.ParkCode }, null)">
+                        <img class=" col-5 img_size" src="~/Content/img/parks/@post.ImageName" />
+                    </a>
+
+                    <div class="col-7">
+                        <span class="fontBold">
+                            <a href="@Url.Action("Detail", "Home", new { parkCode = post.ParkCode }, null)">
+                           
+                            @post.ParkName
+                            </a><br><span>Number of surveys:</span>@Model.Surveys[i-1]
+                        </span><br>
+                    </div>
+                    @{ 
+                      i++;
+                      }
+
+                </div>
             </div>
-            <div class="row">
-                <img class=" col-5 img_size" src="~/Content/img/parks/@post.ImageName" />
- 
-        </div>
-        </div>
-        
-    }
+
+        }
     </div>
 </body>
 </html>

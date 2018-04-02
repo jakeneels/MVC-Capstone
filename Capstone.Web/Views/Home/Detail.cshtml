@@ -8,13 +8,26 @@
     <link rel="stylesheet" href="~/Content/tempSwitch.css" />
 
     <script type="text/javascript">
-   
+
     </script>
 
     <style>
+        h1, h2 {
+            color: #2c3531;
+        }
+        .container {
+            background-color: #edfdff;
+            color: #0B486B;
+        }
+
+        body {
+            background-color: #edfdff;
+            color: #d1e8e2;
+        }
 
         .row {
-            background-color: white;
+            background-color: #d1e8e2;
+            color: #2c3531;
         }
 
         .data:nth-child(odd) {
@@ -35,6 +48,11 @@
             width: auto;
         }
 
+        .detailImg {
+            width: 100%;
+            border-radius: 19px;
+        }
+
         .img {
             position: center;
             width: inherit;
@@ -43,13 +61,26 @@
         .title {
             font-weight: bold;
             font-size: 2em;
+            color: #2c3531;
         }
 
         .row {
             padding-bottom: 2%
         }
-    </style>
 
+        .stats{
+            background-color: #FFCB9A;
+            padding-left: 2%; 
+            padding-top:3px;
+        }
+        .statTable {
+            border-radius: 19px;
+            border:2px solid black;
+        }
+        .sRound {
+            border-radius: 19px;
+        }
+    </style>
 
     <meta charset="utf-8" />
     <title>@Model.NatPark.ParkName</title>
@@ -57,11 +88,38 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12"><img class="img border" src="~/Content/img/parks/@(Model.NatPark.ParkCode + "-l.jpg")"></div>
+            <div class="col-12 title">@Model.NatPark.ParkName </div>
         </div>
+
         <div class="row">
-            <div class="col-12 title border-bottom">@Model.NatPark.ParkName </div>
+            <div class="col-8"><img class="detailImg statTable" src="~/Content/img/parks/@(Model.NatPark.ParkCode + "-l.jpg")"></div>
+            <div class="col-4 statTable stats">
+                <div class="row stats sRound">
+                    Visitors Last Year: @Model.NatPark.AnnualVisitorCount.ToString("N0")
+                </div>
+                <div class="row stats">
+                    Entry: @(Model.NatPark.EntryFee > 0 ? @Model.NatPark.EntryFee.ToString("C") : "Free")
+                </div>
+                <div class="row stats">
+                    @Model.NatPark.State
+                </div>
+                <div class="row stats">
+                    Founded in @Model.NatPark.YearFounded.Year
+                </div>
+                <div class="row stats">
+                    Elevation: @Model.NatPark.ElevationInFeet Ft
+                </div>
+                <div class="row stats">
+                    @Model.NatPark.Acreage Acres
+                </div>
+                <div class="row stats sRound">
+                    @Model.NatPark.MilesOfTrail Miles of Trail
+                </div>
+
+
+            </div>
         </div>
+
 
         <div class="row">
             <div class="col-12">@Model.NatPark.ParkDescription </div>

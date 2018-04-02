@@ -6,9 +6,32 @@
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <style>
 
-        .layout {
-            width: 10%;
-            height:auto;
+        .titleImg {
+            width: 80%;
+            height: auto;
+            background-color: #2c3531;
+        }
+
+        body {
+            width: 100%;
+            background-color: #2c3531;
+        }
+
+        .navBar {
+            background-color: #2c3531 !important;
+        }
+
+        div {
+            background-color: #D1E8E2;
+        }
+
+        nav {
+            background-color: #2c3531;
+        }
+
+        .container {
+            background-color: #2c3531;
+            width: 100%;
         }
 
         li {
@@ -18,28 +41,51 @@
         .tabtext {
             font-size: 20px;
             padding-left: 10px;
+            text-decoration: none;
         }
-        .full-width-div {
-            position: absolute;
-            width: 100%;
-            left: 0;
-            background-color:black;
+
+        a:hover, a:visited, a:link, a:active {
+            text-decoration: none;
         }
+
+        .tabtext a {
+            color: #D1E8E2;
+            -o-transition: .3s;
+            -moz-transition: .3s;
+            -webkit-transition: .3s;
+            transition: .3s;
+        }
+
+            .tabtext a:visited {
+                color: #D1E8E2;
+            }
+
+                .tabtext a:hover {
+                    color: #ffcB9a;
+                    text-decoration: none;
+                }
+
     </style>
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div class="container">
-        
-            <img class="layout" src="~/Content/img/scenery.png" />
-            <nav>
-                <ul class="nav nav-tabs">
-                    <li class="tabtext"><a href="@Url.Action("Index","Home")">Home</a></li>
-                    <li class="tabtext"><a href="@Url.Action("Surveys","Home")">Surveys</a></li>
-                </ul>
-            </nav>
+        <div class="row navBar">
+            <div class="col-2 navBar">
+                <img class="titleImg" src="~/Content/img/scenery.png" />
+            </div>
+            <div class="col-10 navBar">
+                <nav>
+                    <ul class="nav nav-tabs">
+                        <li class="tabtext"><a href="@Url.Action("Index","Home")">View Parks</a></li>
+                        <li class="tabtext"><a href="@Url.Action("Surveys","Home")">Surveys</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
     </div>
-    <div> 
+    <div>
         @RenderBody()
     </div>
 </body>

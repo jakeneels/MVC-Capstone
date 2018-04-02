@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Web.Models.PageModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,6 +24,8 @@ namespace Capstone.Web.Models
     public decimal EntryFee { get; set; }
     public int NumSpecies { get; set; }
     public string ImageName => (ParkCode + ".jpg");
+
+    public List<SurveyPost> Surveys { get; set; } = new List<SurveyPost>();
 
   }
 }

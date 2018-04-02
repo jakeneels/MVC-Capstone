@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div class="row"> <div class=" col-12 text-danger alert-danger text-xl-center"><h5>@(Model.Weather.WeatherDays[0].Advisory == "" ? "" : "Advisory: " + Model.Weather.WeatherDays[0].Advisory)</h5></div></div>
+<div class="row"> <div class="col-12 @(Model.Weather.WeatherDays[0].Advisory == "" ? "" : "text-danger alert-danger text-xl-center")"><h5>@(Model.Weather.WeatherDays[0].Advisory == "" ? "" : "Advisory: " + Model.Weather.WeatherDays[0].Advisory)</h5></div></div>
 
 <div class="row">
     <div class="col-3">

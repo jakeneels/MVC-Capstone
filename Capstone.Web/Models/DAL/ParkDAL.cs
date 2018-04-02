@@ -15,8 +15,27 @@ namespace Capstone.Web.Models.DAL
         {
             this.connectionString = connectionString;
         }
+    public int GetSurveyCount( string parkCode)
+    {
+      const string getSurveyCountSql = @"select count(surveyId) from survey_result";
+      using (SqlConnection conn = new SqlConnection(connectionString))
+      {
+        conn.Open();
+        SqlCommand cmd = new SqlCommand(getSurveyCountSql, conn);
 
-        public List<SurveyPost> GetSurveys()
+        var reader = cmd.ExecuteReader();
+
+        var pls = reader.GetValue(1);
+         pls = reader.GetValue(1);
+
+        int reade = (int) cmd.ExecuteScalar();
+
+
+        return int.Parse(pls.ToString());
+      }
+    }
+
+    public List<SurveyPost> GetSurveys()
         {
             List<SurveyPost> survey = new List<SurveyPost>();
 
