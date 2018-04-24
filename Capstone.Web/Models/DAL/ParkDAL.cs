@@ -15,25 +15,20 @@ namespace Capstone.Web.Models.DAL
         {
             this.connectionString = connectionString;
         }
-    public int GetSurveyCount( string parkCode)
-    {
-      const string getSurveyCountSql = @"select count(surveyId) from survey_result";
-      using (SqlConnection conn = new SqlConnection(connectionString))
-      {
-        conn.Open();
-        SqlCommand cmd = new SqlCommand(getSurveyCountSql, conn);
 
-        var reader = cmd.ExecuteReader();
+    //public List<SurveyPost> GetSurveyPerPark(string parkCode)
+    //{
+    //  const string getSurveyCountSql = @"select count(surveyId), * from survey_result where parkCode = @parkCode";
+    //  using (SqlConnection conn = new SqlConnection(connectionString))
+    //  {
+    //    conn.Open();
+    //    SqlCommand cmd = new SqlCommand(getSurveyCountSql, conn);
+    //    cmd.Parameters.AddWithValue("@parkCode", parkCode);
+    //    var count = cmd.ExecuteScalar();
 
-        var pls = reader.GetValue(1);
-         pls = reader.GetValue(1);
-
-        int reade = (int) cmd.ExecuteScalar();
-
-
-        return int.Parse(pls.ToString());
-      }
-    }
+    //    return int.Parse(count.ToString());
+    //  }
+    //}
 
     public List<SurveyPost> GetSurveys()
         {
@@ -77,7 +72,7 @@ namespace Capstone.Web.Models.DAL
         public bool PostSurvey(SurveyPost survey)
         {
             bool IsSuccessful = false;
-            const string getSurveySql = @"Insert into survey_result(parkCode, emailAddress, state, activityLevel) Values(@parkCode, ' @email', ' @state', '@activity')";
+            const string getSurveySql = @"Insert into survey_result(parkCode, emailAddress, state, activityLevel) Values(@parkCode, @email, @state, @activity)";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -242,7 +237,8 @@ namespace Capstone.Web.Models.DAL
             return weatherDay;
         }
 
+   
 
-        #endregion
-    }
+    #endregion
+  }
 }

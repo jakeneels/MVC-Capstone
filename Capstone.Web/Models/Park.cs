@@ -24,8 +24,11 @@ namespace Capstone.Web.Models
     public decimal EntryFee { get; set; }
     public int NumSpecies { get; set; }
     public string ImageName => (ParkCode + ".jpg");
-
+    public int SurveyCount { get; set; }
     public List<SurveyPost> Surveys { get; set; } = new List<SurveyPost>();
+
+
+
 
   }
 }

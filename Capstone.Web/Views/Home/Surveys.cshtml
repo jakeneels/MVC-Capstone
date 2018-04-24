@@ -44,7 +44,7 @@
                             <a href="@Url.Action("Detail", "Home", new { parkCode = post.ParkCode }, null)">
                            
                             @post.ParkName
-                            </a><br><span>Number of surveys:</span>@Model.Surveys[i-1]
+                            </a><br><span>Number of surveys:</span>@post.Surveys.Count
                         </span><br>
                     </div>
                     @{ 

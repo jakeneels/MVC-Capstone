@@ -22,7 +22,7 @@
               
 
                 <br />
-                    Email: <input name="EMail" />
+                    Email: <input name="EMail" required/>
                 </div>
 
                 <div class="col-5">
@@ -30,12 +30,10 @@
                     <select name="StateOfResidence">
                         @foreach (var state in Model.States)
                         {
-                            <option value="@state.Value">@state.Key</option>
+                            <option  value="@state.Value">@state.Key</option>
                         }
                     </select>
-           
 
-          
                     Activity Level: <select name="PhysicalActivity">
                         <option value="Inactive">Active</option>
                         <option value="Sedentary">Sedentary</option>

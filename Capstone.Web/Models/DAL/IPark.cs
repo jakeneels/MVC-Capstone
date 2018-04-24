@@ -14,5 +14,6 @@ namespace Capstone.Web.Models.DAL
     FiveDayForecast GetForecast(string parkCode);
     List<SurveyPost> GetSurveys();
     bool PostSurvey(SurveyPost survey);
+    //List<SurveyPost> GetSurveyCount(string parkCode);
   }
 }

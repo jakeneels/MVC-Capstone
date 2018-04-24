@@ -39,10 +39,21 @@ namespace Capstone.Web.Controllers
     public ActionResult Surveys()
     {
       var model = new SurveyPage();
+
       model.Surveys = _dal.GetSurveys();
-      
       model.Parks = _dal.GetParks();
 
+      foreach (var sur in model.Surveys)
+      {
+        foreach (var park in model.Parks)
+        {
+          if (sur.ParkCode == park.ParkCode)
+          {
+            park.Surveys.Add(sur);
+          }
+        }
+      }
+      
       return View("Surveys", model);
     }
 

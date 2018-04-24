@@ -11,6 +11,8 @@ namespace Capstone.Web.Models.PageModels
 
     public List<Park> Parks { get; set; } = new List<Park>();
 
+    public List<SurveyPost> Surveys { get; set; } = new List<SurveyPost>();
+
     public Dictionary<string, string> States
     {
       get
